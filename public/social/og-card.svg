@@ -1,0 +1,27 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#09080C"/>
+  <circle cx="932" cy="146" r="160" fill="#7FD6D9" fill-opacity="0.09"/>
+  <circle cx="208" cy="532" r="150" fill="#FF6A5E" fill-opacity="0.09"/>
+  <circle cx="870" cy="320" r="160" stroke="url(#paint0_linear_0_1)" stroke-width="12" stroke-dasharray="320 72 50 34"/>
+  <path d="M888 160C920 212 934 272 930 350C925 412 904 476 858 578" stroke="url(#paint1_linear_0_1)" stroke-width="14" stroke-linecap="round"/>
+  <path d="M822 238L890 360" stroke="#F2EADF" stroke-opacity="0.78" stroke-width="5" stroke-linecap="round"/>
+  <text x="82" y="120" fill="#B9B0A7" font-size="20" font-family="'Familjen Grotesk', sans-serif" letter-spacing="6">CINEMATIC WATCH GUIDE</text>
+  <text x="82" y="272" fill="#F2EADF" font-size="108" font-family="'Cormorant Garamond', serif">Euphoria</text>
+  <text x="82" y="360" fill="#F2EADF" font-size="108" font-family="'Cormorant Garamond', serif">Season 3</text>
+  <text x="82" y="440" fill="#B9B0A7" font-size="30" font-family="'Familjen Grotesk', sans-serif">
+    Release date, cast, schedule, and clearly labeled speculation.
+  </text>
+  <text x="82" y="504" fill="#7FD6D9" font-size="24" font-family="'Familjen Grotesk', sans-serif" letter-spacing="3">APRIL 2026 STATUS PAGE</text>
+  <defs>
+    <linearGradient id="paint0_linear_0_1" x1="734" y1="210" x2="1014" y2="496" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7FD6D9"/>
+      <stop offset="0.56" stop-color="#F2EADF"/>
+      <stop offset="1" stop-color="#FF6A5E"/>
+    </linearGradient>
+    <linearGradient id="paint1_linear_0_1" x1="905" y1="160" x2="850" y2="578" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F2EADF"/>
+      <stop offset="1" stop-color="#FF6A5E"/>
+    </linearGradient>
+  </defs>
+</svg>
+

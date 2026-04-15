@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://euphoria-season-3.lol/sitemap.xml
+

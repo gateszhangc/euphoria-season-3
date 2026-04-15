@@ -1,0 +1,32 @@
+<svg width="1600" height="2000" viewBox="0 0 1600 2000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="2000" fill="#09080C"/>
+  <circle cx="1220" cy="410" r="250" fill="#7FD6D9" fill-opacity="0.08"/>
+  <circle cx="300" cy="1620" r="280" fill="#FF6A5E" fill-opacity="0.08"/>
+  <path d="M0 280C320 260 482 620 786 620C1108 620 1192 248 1600 236" stroke="#F2EADF" stroke-opacity="0.09" stroke-width="2"/>
+  <path d="M0 1500C290 1500 440 1320 760 1320C1120 1320 1300 1560 1600 1560" stroke="#F2EADF" stroke-opacity="0.08" stroke-width="2"/>
+  <circle cx="800" cy="960" r="422" stroke="url(#paint0_linear_0_1)" stroke-width="28" stroke-dasharray="710 168 108 84"/>
+  <circle cx="800" cy="960" r="250" stroke="#F2EADF" stroke-opacity="0.12" stroke-width="1.5"/>
+  <path d="M835 320C920 458 958 621 948 813C939 997 889 1183 772 1518" stroke="url(#paint1_linear_0_1)" stroke-width="24" stroke-linecap="round"/>
+  <path d="M722 726L894 1026" stroke="#F2EADF" stroke-opacity="0.8" stroke-width="8" stroke-linecap="round"/>
+  <path d="M664 1070L842 844" stroke="#F2EADF" stroke-opacity="0.45" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="1126" cy="648" r="22" fill="#7FD6D9"/>
+  <circle cx="484" cy="1326" r="18" fill="#FF6A5E"/>
+  <rect x="112" y="112" width="1376" height="1776" rx="44" stroke="#F2EADF" stroke-opacity="0.12" stroke-width="2"/>
+  <text x="150" y="171" fill="#B9B0A7" font-size="28" font-family="'Familjen Grotesk', sans-serif" letter-spacing="8">NOCTURNE FRACTURE / BRAND STUDY</text>
+  <text x="150" y="1845" fill="#F2EADF" font-size="120" font-family="'Cormorant Garamond', serif">Euphoria Season 3</text>
+  <text x="150" y="1910" fill="#B9B0A7" font-size="30" font-family="'Familjen Grotesk', sans-serif">
+    fractured halo / clinical typography / faith, redemption, and afterglow
+  </text>
+  <defs>
+    <linearGradient id="paint0_linear_0_1" x1="460" y1="522" x2="1180" y2="1360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7FD6D9"/>
+      <stop offset="0.56" stop-color="#F2EADF"/>
+      <stop offset="1" stop-color="#FF6A5E"/>
+    </linearGradient>
+    <linearGradient id="paint1_linear_0_1" x1="880" y1="320" x2="760" y2="1518" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F2EADF"/>
+      <stop offset="1" stop-color="#FF6A5E"/>
+    </linearGradient>
+  </defs>
+</svg>
+

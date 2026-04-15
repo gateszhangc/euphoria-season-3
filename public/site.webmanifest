@@ -1,0 +1,21 @@
+{
+  "name": "Euphoria Season 3",
+  "short_name": "Euphoria S3",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#09080c",
+  "theme_color": "#09080c",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ]
+}
+

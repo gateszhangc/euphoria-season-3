@@ -1,0 +1,19 @@
+{
+  "name": "euphoria-season-3",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "brand:render": "node scripts/render-brand-assets.mjs",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.1",
+    "sharp": "^0.34.3",
+    "vite": "^7.1.7"
+  }
+}
+
