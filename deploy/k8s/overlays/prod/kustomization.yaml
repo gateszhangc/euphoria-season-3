@@ -6,7 +6,7 @@ resources:
   - ingress.yaml
 images:
   - name: registry.144.91.77.245.sslip.io/euphoria-season-3
-    newTag: bf927656603c799f4fd636b4d2406388133d7987
+    newTag: ec6998a118e6798a1389db4e42c1056e867a7bb8
 labels:
   - includeSelectors: true
     pairs:
