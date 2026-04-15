@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: euphoria-season-3
+  annotations:
+    acme.cert-manager.io/http01-edit-in-place: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    cert-manager.io/issue-temporary-certificate: "true"
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-port-in-redirects: "false"
+spec:
+  ingressClassName: nginx
+  tls:
+    - secretName: euphoria-season-3-live-tls
+      hosts:
+        - euphoria-season-3.lol
+        - www.euphoria-season-3.lol
+  rules:
+    - host: euphoria-season-3.lol
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: euphoria-season-3
+                port:
+                  number: 80

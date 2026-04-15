@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: euphoria-season-3
+  labels:
+    app.kubernetes.io/name: euphoria-season-3
+    app.kubernetes.io/part-of: euphoria-season-3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: euphoria-season-3
+      app.kubernetes.io/part-of: euphoria-season-3
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: euphoria-season-3
+        app.kubernetes.io/part-of: euphoria-season-3
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: node-role.kubernetes.io/control-plane
+                    operator: DoesNotExist
+      containers:
+        - name: web
+          image: registry.144.91.77.245.sslip.io/euphoria-season-3:bootstrap
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: PORT
+              value: "80"
+            - name: HOSTNAME
+              value: 0.0.0.0
+          ports:
+            - name: http
+              containerPort: 80
+          readinessProbe:
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            httpGet:
+              path: /
+              port: http
+          livenessProbe:
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            httpGet:
+              path: /
+              port: http
+          startupProbe:
+            failureThreshold: 30
+            periodSeconds: 5
+            httpGet:
+              path: /
+              port: http
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi

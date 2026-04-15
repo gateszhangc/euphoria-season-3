@@ -1,0 +1,92 @@
+name: Build And Release
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: euphoria-season-3-release
+  cancel-in-progress: true
+
+jobs:
+  build-and-push:
+    if: github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, '[skip ci]')
+    runs-on: ubuntu-latest
+    outputs:
+      image_tag: ${{ steps.meta.outputs.image_tag }}
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Derive image tag
+        id: meta
+        run: echo "image_tag=${GITHUB_SHA}" >> "$GITHUB_OUTPUT"
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to registry
+        uses: docker/login-action@v3
+        with:
+          registry: registry.144.91.77.245.sslip.io
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+
+      - name: Build and push image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: registry.144.91.77.245.sslip.io/euphoria-season-3:${{ steps.meta.outputs.image_tag }}
+
+  update-gitops-tag:
+    if: github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, '[skip ci]')
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Update image tag
+        env:
+          IMAGE_TAG: ${{ needs.build-and-push.outputs.image_tag }}
+        run: |
+          python3 - <<'PY'
+          import os
+          from pathlib import Path
+          import re
+
+          path = Path("deploy/k8s/overlays/prod/kustomization.yaml")
+          content = path.read_text()
+          updated, count = re.subn(
+              r"(^\s*newTag:\s*).*$",
+              lambda match: f"{match.group(1)}{os.environ['IMAGE_TAG']}",
+              content,
+              count=1,
+              flags=re.MULTILINE,
+          )
+          if count != 1:
+              raise SystemExit("expected a single newTag entry in kustomization.yaml")
+          path.write_text(updated)
+          PY
+
+      - name: Commit manifest update
+        env:
+          IMAGE_TAG: ${{ needs.build-and-push.outputs.image_tag }}
+        run: |
+          if git diff --quiet -- deploy/k8s/overlays/prod/kustomization.yaml; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add deploy/k8s/overlays/prod/kustomization.yaml
+          git commit -m "chore: release ${IMAGE_TAG} [skip ci]"
+          git push origin HEAD:main
