@@ -70,13 +70,13 @@ pick_free_published_port() {
   local used
   used="$(dokploy_request GET /project.all | jq -r '[.[]?.environments[]?.applications[]?.ports[]?.publishedPort] | map(select(. != null)) | unique | .[]?')"
   local port
-  for port in $(seq 13080 13160); do
+  for port in $(seq 14080 14160); do
     if ! grep -qx "$port" <<<"$used"; then
       printf '%s\n' "$port"
       return 0
     fi
   done
-  fail "unable to find a free published port in 13080-13160"
+  fail "unable to find a free published port in 14080-14160"
 }
 
 create_application() {
